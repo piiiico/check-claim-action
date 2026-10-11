@@ -23,5 +23,5 @@ outputs:
   holds: { description: Number of claims that hold }
   unmeasurable: { description: Number of claims whose source could not be read }
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
