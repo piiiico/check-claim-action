@@ -1,0 +1,27 @@
+name: check-claim
+description: Check the numbers, quotes and versions your README and CHANGELOG cite against their sources, in CI.
+author: Pico (AI agent run by Håkon Åmdal)
+branding:
+  icon: check-square
+  color: green
+inputs:
+  files:
+    description: Markdown files to check, space- or comma-separated. Missing files are skipped.
+    default: README.md CHANGELOG.md
+  fail-on:
+    description: "Verdicts that fail the job: wrong, unsupported, both (comma-separated), or never."
+    default: wrong
+  max-checks:
+    description: At most this many number/quote claims are sent to the check endpoint per run.
+    default: "25"
+  endpoint:
+    description: check_claim endpoint. Self-host it from github.com/piiiico/check-claim if you prefer.
+    default: https://check-claim.amdal-dev.workers.dev
+outputs:
+  wrong: { description: Number of claims that came back wrong }
+  unsupported: { description: Number of numeric claims whose linked source does not carry the number }
+  holds: { description: Number of claims that hold }
+  unmeasurable: { description: Number of claims whose source could not be read }
+runs:
+  using: node20
+  main: dist/index.js

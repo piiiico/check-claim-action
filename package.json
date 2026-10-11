@@ -1,0 +1,8 @@
+{
+  "name": "check-claim-action",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "bun build src/index.ts --target node --format esm --outfile dist/index.js", "test": "bun test src" },
+  "license": "MIT"
+}
